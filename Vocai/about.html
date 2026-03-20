@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>About — Vocai</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --accent:#7000ff;--accent2:#a855f7;
+  --bg:#0e0c1a;--fg:#ffffff;--sub:#8888aa;
+  --border:rgba(255,255,255,0.09);--card:rgba(255,255,255,0.035);
+  --ease:cubic-bezier(.4,0,.2,1);
+}
+body{background:transparent;color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh;padding:48px 0 80px;}
+
+.wrap{max-width:760px;margin:0 auto;padding:0 28px;}
+
+/* HERO */
+.hero{text-align:center;padding:0 0 56px;}
+.hero-tag{display:inline-block;font-size:.6rem;letter-spacing:4px;text-transform:uppercase;color:var(--accent);font-weight:700;border:1px solid rgba(112,0,255,.35);border-radius:99px;padding:5px 14px;margin-bottom:22px;}
+.hero h1{font-size:clamp(2.2rem,6vw,4rem);font-weight:200;letter-spacing:.12em;text-transform:uppercase;line-height:1.1;margin-bottom:14px;}
+.hero h1 span{color:var(--accent);}
+.hero p{font-size:1rem;color:var(--sub);line-height:1.7;max-width:520px;margin:0 auto;}
+
+/* DIVIDER */
+.div{height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);margin:0 0 48px;opacity:.35;}
+
+/* SECTION */
+.sec{margin-bottom:48px;}
+.sec-head{display:flex;align-items:center;gap:12px;margin-bottom:22px;}
+.sec-num{font-size:.58rem;color:var(--accent);font-weight:800;letter-spacing:3px;background:rgba(112,0,255,.12);border:1px solid rgba(112,0,255,.25);border-radius:6px;padding:3px 8px;}
+.sec-title{font-size:.9rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;}
+
+/* CARDS */
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px 22px;margin-bottom:12px;transition:border-color .2s;}
+.card:hover{border-color:rgba(112,0,255,.4);}
+.card h3{font-size:.78rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:8px;}
+.card p,.card li{font-size:.88rem;color:var(--sub);line-height:1.75;}
+.card ul,.card ol{padding-left:18px;}
+.card li{margin-bottom:4px;}
+.card li strong,.card p strong{color:var(--fg);}
+
+/* TWO-COL GRID */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+@media(max-width:560px){.grid2{grid-template-columns:1fr;}}
+
+/* SETTING ROW */
+.srow{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:12px 0;border-bottom:1px solid var(--border);}
+.srow:last-child{border-bottom:none;}
+.srow-name{font-size:.8rem;font-weight:600;color:var(--fg);white-space:nowrap;}
+.srow-desc{font-size:.78rem;color:var(--sub);line-height:1.6;text-align:right;}
+
+/* ERROR TABLE */
+.etable{width:100%;border-collapse:collapse;}
+.etable th{font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--accent);padding:8px 10px;text-align:left;border-bottom:1px solid var(--border);}
+.etable td{font-size:.8rem;padding:10px 10px;border-bottom:1px solid rgba(255,255,255,.04);vertical-align:top;}
+.etable tr:last-child td{border-bottom:none;}
+.etable td:first-child{color:#ff8888;font-family:monospace;font-size:.75rem;white-space:nowrap;}
+.etable td:last-child{color:var(--sub);line-height:1.6;}
+
+/* BADGE */
+.badge{display:inline-block;padding:3px 10px;border-radius:99px;font-size:.6rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+.badge.purple{background:rgba(112,0,255,.15);border:1px solid rgba(112,0,255,.3);color:var(--accent2);}
+.badge.green{background:rgba(0,200,80,.1);border:1px solid rgba(0,200,80,.25);color:#44dd88;}
+.badge.red{background:rgba(255,50,50,.1);border:1px solid rgba(255,50,50,.2);color:#ff7777;}
+
+/* CREDIT FOOTER */
+.footer{text-align:center;padding-top:40px;border-top:1px solid var(--border);}
+.footer p{font-size:.75rem;color:var(--sub);line-height:1.9;}
+.footer .ai{color:var(--accent2);font-weight:600;}
+.footer .open{color:#44dd88;font-weight:600;}
+
+/* INLINE CODE */
+code{background:rgba(112,0,255,.12);border:1px solid rgba(112,0,255,.2);border-radius:5px;padding:1px 6px;font-size:.78rem;font-family:monospace;color:var(--accent2);}
+
+::-webkit-scrollbar{width:3px;}::-webkit-scrollbar-track{background:transparent;}::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:99px;}::-webkit-scrollbar-thumb:hover{background:var(--accent);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="hero-tag">Documentation</div>
+    <h1>About <span>Vocai</span></h1>
+    <p>A browser-based hub for playing preserved Flash and HTML5 games — pulling directly from archive.org and GitHub, with nothing installed and no server required.</p>
+  </div>
+
+  <div class="div"></div>
+
+  <!-- 01 WHAT IS VOCAI -->
+  <div class="sec">
+    <div class="sec-head"><span class="sec-num">01</span><span class="sec-title">What is Vocai?</span></div>
+    <div class="card">
+      <p>Vocai is a <strong>front-end only game hub</strong> that runs entirely in your browser. It has no backend, no database, and no server. Every game is either loaded from a folder on your device or fetched live from a public source like archive.org or a GitHub repository.</p>
+    </div>
+    <div class="card">
+      <p>The goal is to make preserved games as easy to browse and play as possible — with a fast grid interface, persistent history, and a settings system — without needing to download anything or use a separate emulator. <strong>Ruffle</strong> (the community-built Flash emulator) handles all SWF files directly in the browser. HTML games open in a fullscreen iframe.</p>
+    </div>
+  </div>
+
+  <!-- 02 HOW IT WAS BUILT -->
+  <div class="sec">
+    <div class="sec-head"><span class="sec-num">02</span><span class="sec-title">How It Was Built</span></div>
+    <div class="card">
+      <h3>AI-Assisted Project <span class="badge purple" style="margin-left:6px">Claude Sonnet 4.6</span></h3>
+      <p>This project was built with significant assistance from <strong>Claude Sonnet 4.6</strong> by Anthropic. It is not a 100% human-written project — the majority of the code, structure, and logic was generated, iterated, and refined through AI collaboration. This is intentional and acknowledged.</p>
+    </div>
+    <div class="card">
+      <h3>License <span class="badge green" style="margin-left:6px">None</span></h3>
+      <p>There is <strong>no license</strong> on this project, nor will there ever be one. You are free to use it, copy it, modify it, host it, fork it, or strip it for parts entirely. No credit required, no restrictions, no strings attached.</p>
+    </div>
+  </div>
+
+  <!-- 03 HOW TO UPLOAD -->
+  <div class="sec">
+    <div class="sec-head"><span class="sec-num">03</span><span class="sec-title">How to Upload</span></div>
+    <div class="card">
+      <h3>Step by Step</h3>
+      <ol>
+        <li>Click the <strong>UPLOAD</strong> button in the sidebar to open the file panel.</li>
+        <li>On the <strong>Upload</strong> tab, either click the drop zone or drag a folder onto it.</li>
+        <li>Your browser will read all <code>.swf</code> and <code>.html</code> files from the folder recursively.</li>
+        <li>The vault grid will populate with every game found. Click any card to play.</li>
+      </ol>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <h3>SWF Files</h3>
+        <p>Played via <strong>Ruffle</strong>, the open-source Flash emulator. The file is read into memory and passed to Ruffle — no internet required once the folder is loaded.</p>
+      </div>
+      <div class="card">
+        <h3>HTML Files</h3>
+        <p>Opened via <strong>FileReader</strong> — the raw HTML is written into a new <code>about:blank</code> window. Works best for <strong>fully self-contained</strong> HTML files with no external assets.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 ARCHIVE SYSTEM -->
+  <div class="sec">
+    <div class="sec-head"><span class="sec-num">04</span><span class="sec-title">Archive System</span></div>
+    <div class="card">
+      <h3>How archive.org Works Here</h3>
+      <p>Every archive.org collection has a <strong>metadata API endpoint</strong> at <code>archive.org/metadata/IDENTIFIER</code>. This returns a JSON object listing every file in that collection. Vocai calls this endpoint, filters for <code>.swf</code> and <code>.html</code> files, and builds a play URL for each one using archive.org's CORS-enabled download server.</p>
+    </div>
+    <div class="card">
+      <h3>SWF Play URL Format</h3>
+      <p><code>https://cors.archive.org/cors/IDENTIFIER/filename.swf</code> — This endpoint adds the correct CORS headers so Ruffle can fetch and run the file cross-origin.</p>
+    </div>
+    <div class="card">
+      <h3>HTML Play URL Format</h3>
+      <p><code>https://archive.org/download/IDENTIFIER/filename.html</code> — Archive.org serves the file directly. Since all assets in the same archive folder share the same base URL, relative paths (scripts, images, styles) resolve correctly inside the iframe.</p>
+    </div>
+    <div class="card">
+      <h3>Session Persistence</h3>
+      <p>The last loaded archive is saved to <code>localStorage</code>. On refresh, Vocai automatically re-fetches the same archive so your library reappears without needing to click anything.</p>
+    </div>
+  </div>
+
+  <!-- 05 GITHUB SYSTEM -->
+  <div class="sec">
+    <div class="sec-head"><span class="sec-num">05</span><span class="sec-title">GitHub System</span></div>
+    <div class="card">
+      <h3>How GitHub Loading Works</h3>
+      <p>Vocai calls the <strong>GitHub Trees API</strong> at <code>api.github.com/repos/USER/REPO/git/trees/BRANCH?recursive=1</code> to get a flat list of every file in the repository. It filters for <code>.html</code> files, then builds a direct play URL for each one.</p>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <h3>GitHub Pages URL</h3>
+        <p>For repos with GitHub Pages enabled, files are served at <code>username.github.io/repo/path.html</code> with correct MIME types and no iframe restrictions.</p>
+      </div>
+      <div class="card">
+        <h3>rawgithack.com</h3>
+        <p>For repos without GitHub Pages, <code>raw.githack.com</code> is used as a CDN proxy — it serves raw GitHub files with proper <code>text/html</code> MIME types so the iframe renders them correctly.</p>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Custom GitHub Repo</h3>
+      <p>In the <strong>Archives → GitHub Collections</strong> section, paste any <code>username/repo</code> (or full GitHub URL) and an optional branch name. Vocai will pull the file list automatically. If the repo has no <code>.html</code> files, it will return an error.</p>
+    </div>
+    <div class="card">
+      <h3>Rate Limiting</h3>
+      <p>The GitHub API allows <strong>60 unauthenticated requests per hour</strong> per IP. Each GitHub source load uses exactly 1 request (the tree fetch). Normal usage will never hit this limit.</p>
+    </div>
+  </div>
+
+  <!-- 06 SETTINGS GUIDE -->
+  <div class="sec">
+    <div class="sec-head"><span class="sec-num">06</span><span class="sec-title">Settings Reference</span></div>
+    <div class="card" style="padding:10px 22px">
+      <div class="srow"><span class="srow-name">Site Name</span><span class="srow-desc">Changes the title shown in the sidebar and browser tab.</span></div>
+      <div class="srow"><span class="srow-name">Quick URL Button</span><span class="srow-desc">Adds a custom button below the search bar that opens any URL in a fullscreen iframe. Useful for linking to a proxy or tool.</span></div>
+      <div class="srow"><span class="srow-name">Accent Color</span><span class="srow-desc">Changes the primary highlight color used across the entire UI — cards, buttons, labels, waves.</span></div>
+      <div class="srow"><span class="srow-name">Cards Per Page</span><span class="srow-desc">Controls how many game cards are shown per page in the vault grid. Higher values load slower on large archives.</span></div>
+      <div class="srow"><span class="srow-name">Theme</span><span class="srow-desc">Switches between Dark (default) and Light mode. Light mode forces black text on all elements.</span></div>
+      <div class="srow"><span class="srow-name">Sidebar on Start</span><span class="srow-desc">Whether the sidebar is visible or collapsed when the page first loads.</span></div>
+      <div class="srow"><span class="srow-name">Background Waves</span><span class="srow-desc">Toggles the animated canvas wave background. Turning it off improves performance on slower devices.</span></div>
+      <div class="srow"><span class="srow-name">Boot Animation</span><span class="srow-desc">Enables or disables the "hello." splash screen shown on page load.</span></div>
+      <div class="srow"><span class="srow-name">Clear Library</span><span class="srow-desc">Removes all currently loaded files from the vault. Also clears the saved archive state so nothing reloads on refresh.</span></div>
+      <div class="srow"><span class="srow-name">Clear History</span><span class="srow-desc">Wipes the recent files list shown in the sidebar. Does not affect loaded files.</span></div>
+    </div>
+  </div>
+
+  <!-- 07 ERROR REFERENCE -->
+  <div class="sec">
+    <div class="sec-head"><span class="sec-num">07</span><span class="sec-title">Error Reference</span></div>
+    <div class="card" style="padding:8px 4px">
+      <table class="etable">
+        <tr><th>Error</th><th>What It Means & How to Fix It</th></tr>
+        <tr><td>No .swf or .html files found</td><td>The archive.org collection exists but contains no compatible files. Try a different archive or check the identifier is correct.</td></tr>
+        <tr><td>No HTML files found in repo</td><td>The GitHub repository has no <code>.html</code> files at the tree level, or the branch name is wrong. Double-check the branch (main vs master).</td></tr>
+        <tr><td>Could not reach GitHub API</td><td>The GitHub API returned an error — usually a wrong username/repo, a private repo, or the rate limit (60 req/hr) was hit. Wait an hour or check the repo path.</td></tr>
+        <tr><td>No file list</td><td>The archive.org metadata API returned an empty or malformed response. The identifier may be incorrect or the collection may be private.</td></tr>
+        <tr><td>Pop-up blocked</td><td>Your browser blocked the game window from opening. Allow pop-ups for this site in your browser settings and try again.</td></tr>
+        <tr><td>File not found after reload</td><td>A game in your Recent history was from an archive that no longer has that file, or the file was renamed. The archive may have changed since it was first loaded.</td></tr>
+        <tr><td>No archive info saved</td><td>An older history entry was saved before arc metadata tracking was added. Re-load the archive manually from the Upload panel.</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- 08 RECENT & HISTORY -->
+  <div class="sec">
+    <div class="sec-head"><span class="sec-num">08</span><span class="sec-title">Recent History</span></div>
+    <div class="card">
+      <p>Every game you open is saved to <code>localStorage</code> under the key <code>vchist</code>. Entries are grouped in the sidebar by their source archive or "Local Files". Clicking a recent game:</p>
+      <ul style="margin-top:8px">
+        <li>If the source is already loaded → <strong>opens immediately</strong></li>
+        <li>If it's an archive.org source → <strong>auto-fetches the archive</strong>, then opens the file</li>
+        <li>If it's a GitHub source → <strong>auto-fetches the repo tree</strong>, then opens the file</li>
+        <li>If it's a local file → prompts you to <strong>re-upload the folder</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>Built by Birdy &nbsp;·&nbsp; AI-assisted with <span class="ai">Claude Sonnet 4.6</span> &nbsp;·&nbsp; <span class="open">No license — use it however you want</span></p>
+    <p style="margin-top:6px;font-size:.68rem;opacity:.5;">Vocai is not affiliated with archive.org, GitHub, Ruffle, or any game developer whose content appears in third-party archives.</p>
+  </div>
+
+</div>
+</body>
+</html>

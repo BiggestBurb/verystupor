@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Player</title>
+</head>
+<body style="width:100vw;height:100vh;margin:0;padding:0;background:#000;overflow:hidden">
+
+<!-- wasm pre-bundled as JS — Gams proven method, no .wasm fetch, works on file:// -->
+<script src="ruffle/dd0be85ee9c2092132d1.wasm.js"></script>
+<script src="ruffle/c1c1a8b2293497a31e49.wasm.js"></script>
+<script src="ruffle/ruffle.js"></script>
+
+<script>
+function dataURLtoBlobURL(dataURL) {
+    try {
+        var byteString = atob(dataURL.split(',')[1]);
+        var mime = dataURL.split(',')[0].split(':')[1].split(';')[0];
+        var ab = new ArrayBuffer(byteString.length);
+        var ia = new Uint8Array(ab);
+        for (var i = 0; i < byteString.length; i++) ia[i] = byteString.charCodeAt(i);
+        return URL.createObjectURL(new Blob([ab], { type: mime }));
+    } catch(e) {
+        alert('Failed to convert data URL: ' + e.message);
+    }
+}
+
+function launchEmbed(src) {
+    var embed = document.createElement('embed');
+    embed.style.width   = '100vw';
+    embed.style.height  = '100vh';
+    embed.style.display = 'block';
+    embed.name = 'plugin';
+    embed.type = 'application/x-shockwave-flash';
+    embed.src  = src;
+    document.body.appendChild(embed);
+}
+
+var urlParams = new URLSearchParams(window.location.search);
+var swfUrl    = urlParams.get('swf');
+var channel   = urlParams.get('channel');
+var title     = urlParams.get('title');
+if (title) document.title = decodeURIComponent(title);
+
+if (swfUrl) {
+    // Remote archive URL — pass directly to Ruffle embed
+    launchEmbed(decodeURIComponent(swfUrl));
+} else if (channel) {
+    // Local file — receive dataURL via BroadcastChannel, convert to blob
+    var bc = new BroadcastChannel(channel);
+    bc.onmessage = function(event) {
+        if (event.data.type === 'swf') {
+            var blobURL = dataURLtoBlobURL(event.data.data);
+            launchEmbed(blobURL);
+            bc.postMessage({ type: 'close' });
+            bc.close();
+        }
+        if (event.data.type === 'close') bc.close();
+    };
+}
+</script>
+</body>
+</html>
